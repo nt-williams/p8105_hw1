@@ -75,8 +75,9 @@ Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The
 
 ```{r scatter plot one}
 
-color_logical <- ggplot(df_p2, aes(x = x, color = vec_logical)) +
-  geom_histogram()
+color_logical <- ggplot(
+  df_p2, aes(x = x, y = y, color = vec_logical)) +
+  geom_point()
 
 print(color_logical)
 
@@ -84,8 +85,12 @@ print(color_logical)
 
 ```{r scatter plot two}
 
-color_numeric <- ggplot(df_p2, aes(x = x, color = vec_numeric)) +
-  geom_histogram()
+color_numeric <- ggplot(
+  df_p2, aes(
+    x = x, 
+    y = y, 
+    color = vec_numeric)) +
+  geom_point()
 
 print(color_numeric)
 
@@ -93,14 +98,23 @@ print(color_numeric)
 
 ```{r scatter plot three}
 
-color_factor <- ggplot(df_p2, aes(x = x, color = vec_factor)) + 
-  geom_histogram()
+color_factor <- ggplot(
+  df_p2, aes(
+    x = x, 
+    y = y, 
+    color = vec_factor)) + 
+  geom_point()
   
 print(color_factor)
 
 ```
 
+```{r saving color_logical}
 
+ggsave("plots/scatter_plot_logical.pdf", 
+       height = 4, width = 6)
+
+```
 
 
 
