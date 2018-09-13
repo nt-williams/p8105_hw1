@@ -76,7 +76,10 @@ Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The
 ```{r scatter plot one}
 
 color_logical <- ggplot(
-  df_p2, aes(x = x, y = y, color = vec_logical)) +
+  df_p2, aes(
+    x = x, 
+    y = y, 
+    color = vec_logical)) +
   geom_point()
 
 print(color_logical)
