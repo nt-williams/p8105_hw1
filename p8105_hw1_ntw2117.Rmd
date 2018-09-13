@@ -73,6 +73,32 @@ df_p2 <- tibble(
 
 Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The mean of vector x is `r mean(df_p2$x)` and the median is `r median(df_p2$x)`. The proportion of cases for which vec_logical = TRUE is `r sum(as.numeric(df_p2$vec_logical)) / 1000`.
 
+```{r scatter plot one}
+
+color_logical <- ggplot(df_p2, aes(x = x, color = vec_logical)) +
+  geom_histogram()
+
+print(color_logical)
+
+```
+
+```{r scatter plot two}
+
+color_numeric <- ggplot(df_p2, aes(x = x, color = vec_numeric)) +
+  geom_histogram()
+
+print(color_numeric)
+
+```
+
+```{r scatter plot three}
+
+color_factor <- ggplot(df_p2, aes(x = x, color = vec_factor)) + 
+  geom_histogram()
+  
+print(color_factor)
+
+```
 
 
 
