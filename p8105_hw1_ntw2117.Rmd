@@ -22,3 +22,12 @@ df_p1 <- tibble(
 
 ```
 
+```{r means}
+
+mean(df_p1$vec_numeric)
+mean(df_p1$vec_logical)
+mean(df_p1$vec_char)
+mean(df_p1$vec_factor)
+
+```
+
