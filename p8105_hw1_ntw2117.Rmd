@@ -31,3 +31,4 @@ mean(df_p1$vec_factor)
 
 ```
 
+I am able to take the mean of the numeric and logical vector. However, I cannot take the mean of the character or factor vector; when I try an error is returned indicating the argument is not numeric or logical. I'm assuming I can take the mean of a logical vector because R internally represents false as 0 and true as 1. 
