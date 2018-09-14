@@ -71,7 +71,7 @@ df_p2 <- tibble(
 
 ### Dataframe description
 
-Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The mean of vector x is `r mean(df_p2$x)` and the median is `r median(df_p2$x)`. The proportion of cases for which vec_logical = TRUE is `r sum(as.numeric(df_p2$vec_logical)) / 1000`.
+Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The mean of vector x is `r round(mean(df_p2$x), 3)` and the median is `r round(median(df_p2$x), 3)`. The proportion of cases for which vec_logical = TRUE is `r sum(df_p2$vec_logical) / nrow(df_p2)`.
 
 ### Scatterplots
 
