@@ -11,44 +11,36 @@ library(tidyverse)
 ## Problem 1
 
 ```{r problem 1 dataframe}
-
 set.seed(1)
 
-df_p1 <- tibble(
+data_p1 <- tibble(
   vec_numeric = runif(10, 0, 5), 
   vec_logical = vec_numeric > 2, 
   vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "j", "k"), 
   vec_factor = factor(c("male", "female", "male", "female", "female", "male", "male", "female", "female", "male"))
 )
-
 ```
 
 ```{r means}
-
-mean(df_p1$vec_numeric)
-mean(df_p1$vec_logical)
-mean(df_p1$vec_char)
-mean(df_p1$vec_factor)
-
+mean(data_p1$vec_numeric)
+mean(data_p1$vec_logical)
+mean(data_p1$vec_char)
+mean(data_p1$vec_factor)
 ```
 
 I am able to take the mean of the numeric and logical vector. However, I cannot take the mean of the character or factor vector; when I try an error is returned indicating the argument is not numeric or logical. I'm assuming I can take the mean of a logical vector because R internally represents false as 0 and true as 1. 
 
 ```{r converting practice 1, eval = FALSE}
-
-as.numeric(df_p1$vec_logical)
-as.numeric(df_p1$vec_char)
-as.numeric(df_p1$vec_factor)
-
+as.numeric(data_p1$vec_logical)
+as.numeric(data_p1$vec_char)
+as.numeric(data_p1$vec_factor)
 ```
 
 When I convert the logical vector to numeric a vector of 0 and 1s is returned, confirming my suspicion about R's internal representation of logical values. For the character vector, NAs are returned when I try to convert the vector to numeric. When I convert the factor vector to numeric a vector of 1s and 2s are returned. I believe these correspond to the 1st and the 2nd level of the factor respectively. 
 
 ```{r converting practice 2, eval = FALSE}
-
-as.numeric(as.factor(df_p1$vec_char))
-as.numeric(as.character(df_p1$vec_factor))
-
+as.numeric(as.factor(data_p1$vec_char))
+as.numeric(as.character(data_p1$vec_factor))
 ```
 
 When I convert the character vector to a factor and then to a numeric vector a vector of values ranging from 1:10 are returned. This represent R first factoring the 10 character values and then returning the levels of the factor when coerced to numeric. NAs are returned when I convert the factor vector to character and then to numeric. This is becuase R is unable to convert character values to numeric. 
@@ -56,66 +48,58 @@ When I convert the character vector to a factor and then to a numeric vector a v
 ## Problem 2
 
 ```{r problem 2 dataframe}
-
 set.seed(1)
 
-df_p2 <- tibble(
+data_p2 <- tibble(
   x = rnorm(1000), 
   y = rnorm(1000), 
   vec_logical = x + y > 0, 
   vec_numeric = as.numeric(vec_logical), 
   vec_factor = factor(vec_numeric)
 )
-
 ```
 
 ### Dataframe description
 
-Dataframe, df_p2, has size `r nrow(df_p2)` rows and `r ncol(df_p2)` columns. The mean of vector x is `r round(mean(df_p2$x), 3)` and the median is `r round(median(df_p2$x), 3)`. The proportion of cases for which vec_logical = TRUE is `r sum(df_p2$vec_logical) / nrow(df_p2)`.
+Dataframe, data_p2, has size `r nrow(data_p2)` rows and `r ncol(data_p2)` columns. The mean of vector x is `r round(mean(data_p2$x), 3)` and the median is `r round(median(data_p2$x), 3)`. The proportion of cases for which vec_logical = TRUE is `r sum(data_p2$vec_logical) / nrow(data_p2)`.
 
 ### Scatterplots
 
 ```{r scatter plot one}
-
 color_logical <- ggplot(
-  df_p2, aes(
+  data_p2, aes(
     x = x, 
     y = y, 
     color = vec_logical)) +
   geom_point()
 
 print(color_logical)
-
 ```
 
 Cases are divided into 2 colors when the color attribute is defined by the logical vector; blue corresponds to true indicating that the sum of x and y is greater than 0 while orange corresponds to false. 
 
 ```{r scatter plot two}
-
 color_numeric <- ggplot(
-  df_p2, aes(
+  data_p2, aes(
     x = x, 
     y = y, 
     color = vec_numeric)) +
   geom_point()
 
 print(color_numeric)
-
 ```
 
 When the color attribute is mapped to a continous variable, cases are assigned a color based on the continous variables mapping to a color scale. In this case, cases only have a value of 0 or 1 and thus are only dark blue or light blue. However, the legend shows how the color could range for values between 0 and 1. 
 
 ```{r scatter plot three}
-
 color_factor <- ggplot(
-  df_p2, aes(
+  data_p2, aes(
     x = x, 
     y = y, 
     color = vec_factor)) + 
   geom_point()
   
 print(color_factor)
-
 ```
 
 When cases are assigned color based on the mapping of a factor variable it returns to the same plot as when the color attribute was defined using the logical vector. This is because the same information is being displayed however true has become 1 and false has become 0. 
@@ -123,11 +107,9 @@ When cases are assigned color based on the mapping of a factor variable it retur
 ### Saving first scatterplot
 
 ```{r saving color_logical}
-
 ggsave("plots/scatter_plot_logical.pdf", 
        plot = color_logical,
        height = 4, width = 6)
-
 ```
 
 
