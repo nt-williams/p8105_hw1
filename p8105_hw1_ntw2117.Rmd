@@ -16,7 +16,7 @@ set.seed(1)
 data_p1 <- tibble(vec_numeric = runif(10, 0, 5), 
                   vec_logical = vec_numeric > 2, 
                   vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "j", "k"), 
-                  vec_factor = factor(c("male", "female", "male", "female", "female", "male", "male", "female", "female", "male")))
+                  vec_factor = factor(c("m", "f", "m", "f", "f", "m", "m", "f", "f", "m")))
 ```
 
 ### Calculating means
