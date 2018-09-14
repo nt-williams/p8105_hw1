@@ -70,7 +70,7 @@ color_logical <- ggplot(data_p2,
                         aes(x = x, y = y, color = vec_logical)) + 
                  geom_point()
 
-print(color_logical)
+color_logical
 ```
 
 Cases are divided into 2 colors when the color attribute is defined by the logical vector; blue corresponds to true indicating that the sum of x and y is greater than 0 while orange corresponds to false. 
@@ -80,7 +80,7 @@ color_numeric <- ggplot(data_p2,
                         aes(x = x, y = y, color = vec_numeric)) +
                  geom_point()
 
-print(color_numeric)
+color_numeric
 ```
 
 When the color attribute is mapped to a continous variable, cases are assigned a color based on the continous variables mapping to a color scale. In this case, cases only have a value of 0 or 1 and thus are only dark blue or light blue. However, the legend shows how the color could range for values between 0 and 1. 
@@ -90,7 +90,7 @@ color_factor <- ggplot(data_p2,
                        aes(x = x, y = y, color = vec_factor)) + 
                 geom_point()
   
-print(color_factor)
+color_factor
 ```
 
 When cases are assigned color based on the mapping of a factor variable it returns to the same plot as when the color attribute was defined using the logical vector. This is because the same information is being displayed however true has become 1 and false has become 0. 
