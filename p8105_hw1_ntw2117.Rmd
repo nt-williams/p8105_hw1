@@ -10,7 +10,7 @@ library(tidyverse)
 
 ## Problem 1
 
-```{r problem 1 dataframe}
+```{r create problem 1 dataframe}
 set.seed(1)
 
 data_p1 <- tibble(vec_numeric = runif(10, 0, 5), 
@@ -21,14 +21,14 @@ data_p1 <- tibble(vec_numeric = runif(10, 0, 5),
 
 ### Calculating means
 
-```{r means}
+```{r calculating means}
 mean(data_p1$vec_numeric)
 mean(data_p1$vec_logical)
 mean(data_p1$vec_char)
 mean(data_p1$vec_factor)
 ```
 
-I am able to take the mean of the numeric and logical vector. However, I cannot take the mean of the character or factor vector; when I try an error is returned indicating the argument is not numeric or logical. I'm assuming I can take the mean of a logical vector because R internally represents false as 0 and true as 1. 
+I am able to take the mean of the numeric and logical vector. However, I cannot take the mean of the character or factor vector; an error is returned indicating the argument is not numeric or logical. I'm assuming I can take the mean of a logical vector because R internally represents false as 0 and true as 1. 
 
 ### Data type conversion
 
@@ -38,7 +38,7 @@ as.numeric(data_p1$vec_char)
 as.numeric(data_p1$vec_factor)
 ```
 
-When I convert the logical vector to numeric a vector of 0 and 1s is returned, confirming my suspicion about R's internal representation of logical values. For the character vector, NAs are returned when I try to convert the vector to numeric. When I convert the factor vector to numeric a vector of 1s and 2s are returned. I believe these correspond to the 1st and the 2nd level of the factor respectively. 
+When I convert the logical vector to numeric a vector of 0s and 1s is returned, confirming my suspicion about R's internal representation of logical values. For the character vector, NAs are returned when I try to convert the vector to numeric. When I convert the factor vector to numeric a vector of 1s and 2s are returned. I believe these correspond to the 1st and the 2nd level of the factor respectively. 
 
 ```{r converting practice 2, eval = FALSE}
 as.numeric(as.factor(data_p1$vec_char))
@@ -49,7 +49,7 @@ When I convert the character vector to a factor and then to a numeric vector a v
 
 ## Problem 2
 
-```{r problem 2 dataframe}
+```{r create problem 2 dataframe}
 set.seed(1)
 
 data_p2 <- tibble(x = rnorm(1000), 
@@ -97,8 +97,8 @@ When cases are assigned color based on the mapping of a factor variable it retur
 
 ### Saving first scatterplot
 
-```{r saving color_logical}
-ggsave("plots/scatter_plot_logical.pdf", 
+```{r saving color_logical scatterplot}
+ggsave("scatter_plot_logical.pdf", 
        plot = color_logical,
        height = 4, width = 6)
 ```
