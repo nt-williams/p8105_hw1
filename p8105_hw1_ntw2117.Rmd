@@ -16,7 +16,8 @@ set.seed(1)
 data_p1 <- tibble(vec_numeric = runif(10, 0, 5), 
                   vec_logical = vec_numeric > 2, 
                   vec_char = c("a", "b", "c", "d", "e", "f", "g", "h", "j", "k"), 
-                  vec_factor = factor(c("m", "f", "m", "f", "f", "m", "m", "f", "f", "m")))
+                  vec_factor = factor(c("m", "f", "m", "f", "f", "m", "m", "f", "f", "m"))
+                  )
 ```
 
 ### Calculating means
@@ -56,7 +57,8 @@ data_p2 <- tibble(x = rnorm(1000),
                   y = rnorm(1000), 
                   vec_logical = x + y > 0, 
                   vec_numeric = as.numeric(vec_logical), 
-                  vec_factor = factor(vec_numeric))
+                  vec_factor = factor(vec_numeric)
+                  )
 ```
 
 ### Dataframe description
