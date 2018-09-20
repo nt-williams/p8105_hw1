@@ -22,7 +22,7 @@ data_p1 <- tibble(vec_numeric = runif(10, 0, 5),
 
 ### Calculating means
 
-```{r calculating means}
+```{r calculating means, collapse = TRUE}
 mean(data_p1$vec_numeric)
 mean(data_p1$vec_logical)
 mean(data_p1$vec_char)
@@ -68,31 +68,27 @@ Dataframe, data_p2, has size `r nrow(data_p2)` rows and `r ncol(data_p2)` column
 ### Scatterplots
 
 ```{r scatter plot one}
-color_logical <- ggplot(data_p2, 
+scatter_logical <- ggplot(data_p2, 
                         aes(x = x, y = y, color = vec_logical)) + 
                  geom_point()
 
-color_logical
+scatter_logical
 ```
 
 Cases are divided into 2 colors when the color attribute is defined by the logical vector; blue corresponds to true indicating that the sum of x and y is greater than 0 while orange corresponds to false. 
 
 ```{r scatter plot two}
-color_numeric <- ggplot(data_p2, 
-                        aes(x = x, y = y, color = vec_numeric)) +
-                 geom_point()
-
-color_numeric
+ggplot(data_p2, 
+       aes(x = x, y = y, color = vec_numeric)) +
+  geom_point()
 ```
 
 When the color attribute is mapped to a continous variable, cases are assigned a color based on the continous variables mapping to a color scale. In this case, cases only have a value of 0 or 1 and thus are only dark blue or light blue. However, the legend shows how the color could range for values between 0 and 1. 
 
 ```{r scatter plot three}
-color_factor <- ggplot(data_p2, 
-                       aes(x = x, y = y, color = vec_factor)) + 
-                geom_point()
-  
-color_factor
+ggplot(data_p2, 
+       aes(x = x, y = y, color = vec_factor)) + 
+  geom_point()
 ```
 
 When cases are assigned color based on the mapping of a factor variable it returns to the same plot as when the color attribute was defined using the logical vector. This is because the same information is being displayed however true has become 1 and false has become 0. 
@@ -101,7 +97,7 @@ When cases are assigned color based on the mapping of a factor variable it retur
 
 ```{r saving color_logical scatterplot}
 ggsave("scatter_plot_logical.pdf", 
-       plot = color_logical,
+       plot = scatter_logical,
        height = 4, width = 6)
 ```
 
